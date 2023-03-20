@@ -1,0 +1,178 @@
+GFORTRAN module created from common_par.f90 on Fri Mar 18 14:01:44 2011
+MD5:7b8d015d7d36bfaa989542960aaf1c06 -- If you edit this, you'll get what you deserve.
+
+(() () () () () () () () () () ()
+() () () () () () () () () () () () () () () ())
+
+()
+
+()
+
+()
+
+()
+
+(2 '__convert_i4_r8' '(intrinsic)' '__convert_i4_r8' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN FUNCTION ELEMENTAL PURE) (
+REAL 8 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+3 '__convert_r4_r8' '(intrinsic)' '__convert_r4_r8' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN FUNCTION ELEMENTAL PURE) (
+REAL 8 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+4 'a' 'common_par' 'a' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 REAL ())
+0 '0.10000000000000@1') () 0 () () () 0 0)
+5 'betay' 'common_par' 'betay' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.e7ef9e00000000@0') () 0 () () () 0 0)
+6 'common_par' 'common_par' 'common_par' 1 ((MODULE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN) (UNKNOWN 0 0 0 UNKNOWN ()) 0 0 () () 0 ()
+() () 0 0)
+7 'dp' 'nrtype' 'dp' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0
+0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+8 'dpc' 'nrtype' 'dpc' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0
+0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+9 'gsp' 'common_par' 'gsp' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.119999a0000000@1') () 0 () () () 0 0)
+10 'huge' '(intrinsic)' 'huge' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN FUNCTION) (UNKNOWN 0 0 0 UNKNOWN ()) 0 0 () () 10 () ()
+() 0 0)
+11 'i1b' 'nrtype' 'i1b' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '1') () 0 () () () 0 0)
+12 'i2b' 'nrtype' 'i2b' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '2') () 0 () () () 0 0)
+13 'i4b' 'nrtype' 'i4b' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+14 'infinit' 'common_par' 'infinit' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.ffffff00000000@32') () 0 () () () 0 0)
+15 'kappan' 'common_par' 'kappan' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.52d0e580000000@0') () 0 () () () 0 0)
+16 'kappat' 'common_par' 'kappat' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.52d0e580000000@0') () 0 () () () 0 0)
+17 'kind' '(intrinsic)' 'kind' 1 ((PROCEDURE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN FUNCTION) (INTEGER 4 0 0 INTEGER ()) 0 0 () () 17 () ()
+() 0 0)
+18 'ktight' 'common_par' 'ktight' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN DIMENSION) (REAL 8 0 0 REAL ()) 0 0 () (2
+EXPLICIT (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER
+4 0 0 INTEGER ()) 0 '800') (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '16')) 0 () () () 0 0)
+19 'lambda' 'common_par' 'lambda' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.10000000000000@1') () 0 () () () 0 0)
+20 'largestb' 'common_par' 'largestb' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '-0.66666680000000@0') () 0 () () () 0 0)
+21 'lgt' 'nrtype' 'lgt' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+22 'maxit' 'common_par' 'maxit' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1000') () 0 () () () 0 0)
+23 'maxitbis' 'common_par' 'maxitbis' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '2000') () 0 () () () 0 0)
+24 'maxitpolicy' 'common_par' 'maxitpolicy' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1000') () 0 () () () 0 0)
+25 'minb' 'common_par' 'minb' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '-0.1051eb80000000@1') () 0 () () () 0 0)
+26 'mu' 'common_par' 'mu' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.347ae140000000@0') () 0 () () () 0 0)
+27 'nb1' 'common_par' 'nb1' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '800') () 0 () () () 0 0)
+28 'nip' 'common_par' 'nip' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+29 'nipp' 'common_par' 'nipp' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+30 'nrtype' 'nrtype' 'nrtype' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN) (UNKNOWN 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
+31 'nss1' 'common_par' 'nss1' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '16') () 0 () () () 0 0)
+32 'ntry' 'common_par' 'ntry' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '200') () 0 () () () 0 0)
+33 'omega' 'common_par' 'omega' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.4e979900000000@0') () 0 () () () 0 0)
+34 'p' 'common_par' 'p' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN DIMENSION) (REAL 8 0 0 REAL ()) 0 0 () (2 EXPLICIT (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0
+'16') (CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0
+0 INTEGER ()) 0 '16')) 0 () () () 0 0)
+35 'rbar' 'common_par' 'rbar' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.a3d70a00000000@-1') () 0 () () () 0 0)
+36 'se' 'common_par' 'se' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN DIMENSION) (REAL 8 0 0 REAL ()) 0 0 () (1 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0
+INTEGER ()) 0 '16')) 0 () () () 0 0)
+37 'selected_int_kind' '(intrinsic)' 'selected_int_kind' 1 ((PROCEDURE
+UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN FUNCTION) (REAL 4 0 0 REAL ())
+0 0 () () 37 () () () 0 0)
+38 'senn' 'common_par' 'senn' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN UNKNOWN DIMENSION) (REAL 8 0 0 REAL ()) 0 0 () (1 EXPLICIT (
+CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') (CONSTANT (INTEGER 4 0 0
+INTEGER ()) 0 '16')) 0 () () () 0 0)
+39 'sig' 'common_par' 'sig' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.20000000000000@1') () 0 () () () 0 0)
+40 'sp' 'nrtype' 'sp' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (INTEGER 4 0
+0 INTEGER ()) 0 '8') () 0 () () () 0 0)
+41 'spc' 'nrtype' 'spc' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '4') () 0 () () () 0 0)
+42 'tcut' 'common_par' 'tcut' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '1000') () 0 () () () 0 0)
+43 'tempr' 'common_par' 'tempr' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.10a3d70a000000@1') () 0 () () () 0 0)
+44 'tolbrent' 'common_par' 'tolbrent' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.2af31dc0000000@-6') () 0 () () () 0 0)
+45 'tollimit' 'common_par' 'tollimit' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.a7c5ac00000000@-4') () 0 () () () 0 0)
+46 'tolpol' 'common_par' 'tolpol' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.1ad7f2a0000000@-5') () 0 () () () 0 0)
+47 'tolvfi' 'common_par' 'tolvfi' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.1ad7f2a0000000@-5') () 0 () () () 0 0)
+48 'tolzbrent' 'common_par' 'tolzbrent' 1 ((PARAMETER UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (
+CONSTANT (REAL 8 0 0 REAL ()) 0 '0.2af31dc0000000@-6') () 0 () () () 0 0)
+49 'tt' 'common_par' 'tt' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (INTEGER 4 0 0 INTEGER ()) 0 0 () (CONSTANT (
+INTEGER 4 0 0 INTEGER ()) 0 '80000') () 0 () () () 0 0)
+50 'xacc' 'common_par' 'xacc' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE) (REAL 8 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0
+REAL ()) 0 '0.6df37f80000000@-8') () 0 () () () 0 0)
+)
+
+('__convert_i4_r8' 0 2 '__convert_r4_r8' 0 3 'a' 0 4 'betay' 0 5
+'common_par' 0 6 'dp' 0 7 'dpc' 0 8 'gsp' 0 9 'huge' 0 10 'i1b' 0 11 'i2b'
+0 12 'i4b' 0 13 'infinit' 0 14 'kappan' 0 15 'kappat' 0 16 'kind' 0 17
+'ktight' 0 18 'lambda' 0 19 'largestb' 0 20 'lgt' 0 21 'maxit' 0 22
+'maxitbis' 0 23 'maxitpolicy' 0 24 'minb' 0 25 'mu' 0 26 'nb1' 0 27 'nip'
+0 28 'nipp' 0 29 'nrtype' 0 30 'nss1' 0 31 'ntry' 0 32 'omega' 0 33 'p'
+0 34 'rbar' 0 35 'se' 0 36 'selected_int_kind' 0 37 'senn' 0 38 'sig' 0
+39 'sp' 0 40 'spc' 0 41 'tcut' 0 42 'tempr' 0 43 'tolbrent' 0 44
+'tollimit' 0 45 'tolpol' 0 46 'tolvfi' 0 47 'tolzbrent' 0 48 'tt' 0 49
+'xacc' 0 50)

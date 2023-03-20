@@ -1,0 +1,96 @@
+# Este código replica el paper de Duan (1995)
+# Revisión Agosto 12, 2021
+
+# Parámetros originales del paper
+nulldata 180
+setobs 1 1 --time-series
+scalar omega	= 0.00001524
+scalar alpha	= 0.1883
+scalar beta		= 0.7162
+scalar lambda	= 0.007452
+
+# Elementos simulación
+scalar sims = 30000
+matrix C30a = zeros(sims,9)
+matrix C30b = zeros(sims,9)
+matrix C30c = zeros(sims,9)
+matrix C90a = zeros(sims,9)
+matrix C90b = zeros(sims,9)
+matrix C90c = zeros(sims,9)
+matrix C180a = zeros(sims,9)
+matrix C180b = zeros(sims,9)
+matrix C180c = zeros(sims,9)
+set seed 20210812
+
+# Parámetros adicionales
+scalar per_P = alpha + beta
+scalar sig2_P = omega/(1-per_P)
+scalar volA = sqrt(365*sig2_P)
+scalar per_Q = alpha*(1+lambda^2) + beta
+scalar sig2_Q = omega/(1-per_Q)
+
+# Black-Scholes-Merton (bajo P)
+scalar t30 = volA*sqrt(30/365)
+scalar t90 = volA*sqrt(90/365)
+scalar t180 = volA*sqrt(180/365)
+matrix B = zeros(9,4)
+loop k=1..9 --quiet
+    scalar x = 0.75 + 0.05*$k
+    B[$k,1]= x
+    scalar d1 = (log(x) + 0.5*t30*t30)/t30
+    scalar d2 = d1 - t30
+    B[$k,2] = 10000*(x*cnorm(d1) - cnorm(d2))   
+    scalar d1 = (log(x) + 0.5*t90*t90)/t90
+    scalar d2 = d1 - t90
+    B[$k,3] = 10000*(x*cnorm(d1) - cnorm(d2))   
+    scalar d1 = (log(x) + 0.5*t180*t180)/t180
+    scalar d2 = d1 - t180
+    B[$k,4] = 10000*(x*cnorm(d1) - cnorm(d2))   
+endloop
+
+# Monte Carlo bajo la medida Q
+loop m=1..sims --quiet
+    smpl --full --quiet
+    series v = normal()
+    series ha = 0.64*sig2_Q
+    series ha = omega + alpha*ha(-1)*((v(-1)-lambda)^2) + beta*ha(-1)
+    series ra = -0.5*ha + sqrt(ha)*v
+    series hb = sig2_Q
+    series hb = omega + alpha*hb(-1)*((v(-1)-lambda)^2) + beta*hb(-1)
+    series rb = -0.5*hb + sqrt(hb)*v
+    series hc = 1.44*sig2_Q
+    series hc = omega + alpha*hc(-1)*((v(-1)-lambda)^2) + beta*hc(-1)
+    series rc = -0.5*hc + sqrt(hc)*v
+    smpl 1 30 --quiet
+    scalar S30a	= exp(sum(ra))
+    scalar S30b	= exp(sum(rb))
+    scalar S30c	= exp(sum(rc))  
+    smpl 1 90 --quiet
+    scalar S90a	= exp(sum(ra))
+    scalar S90b	= exp(sum(rb))
+    scalar S90c	= exp(sum(rc))
+    smpl 1 180 --quiet
+    scalar S180a	= exp(sum(ra))
+    scalar S180b	= exp(sum(rb))
+    scalar S180c	= exp(sum(rc))
+    loop k=1..9 --quiet
+        scalar x = 0.75 + 0.05*$k
+        C30a[$m,$k]= 10000*xmax(x*S30a-1,0)
+        C30b[$m,$k]= 10000*xmax(x*S30b-1,0)
+        C30c[$m,$k]= 10000*xmax(x*S30c-1,0)        
+        C90a[$m,$k]= 10000*xmax(x*S90a-1,0)
+        C90b[$m,$k]= 10000*xmax(x*S90b-1,0)
+        C90c[$m,$k]= 10000*xmax(x*S90c-1,0)
+        C180a[$m,$k]= 10000*xmax(x*S180a-1,0)
+        C180b[$m,$k]= 10000*xmax(x*S180b-1,0)                
+        C180c[$m,$k]= 10000*xmax(x*S180c-1,0)
+    endloop
+endloop
+
+# Resumen y resultados
+matrix A30 = B[,1]~B[,2]~meanc(C30a)'~meanc(C30b)'~meanc(C30c)'
+matrix A90 = B[,1]~B[,3]~meanc(C90a)'~meanc(C90b)'~meanc(C90c)'
+matrix A180 = B[,1]~B[,4]~meanc(C180a)'~meanc(C180b)'~meanc(C180c)'
+A30
+A90
+A180
