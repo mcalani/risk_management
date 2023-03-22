@@ -138,14 +138,14 @@ plot(v1)
 plot!(v2)
 
 #optimal decision rule
-σ_h=zeros(n_a);
-σ_l=zeros(n_a);
-for i in 1:n_a
-    σ_h[i]= a[v1_i[i]]
-    σ_l[i]= a[v2_i[i]]
-end
-plot(σ_h)
-plot!(σ_l)
+# σ_h=zeros(n_a);
+# σ_l=zeros(n_a);
+# for i in 1:n_a
+    # σ_h[i]= a[v1_i[i]]
+    # σ_l[i]= a[v2_i[i]]
+# end
+# plot(σ_h)
+# plot!(σ_l)
 
 #price convergence
 plot(Q)

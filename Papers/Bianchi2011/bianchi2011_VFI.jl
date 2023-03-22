@@ -20,7 +20,7 @@ Threads.nthreads()
 # ---------------------------------------------------------------------------- #
 #                                  Calibration                                 #
 # ---------------------------------------------------------------------------- #
-include("Bianchi2011_stochastic.jl")
+include("calibration.jl")
 
 function Economy(;  r  = 0.04,             #interest rate
                     σ  = 2,                #risk aversion

@@ -326,6 +326,6 @@ summ_nh
 summ_fh
 
 cd(dirname(@__FILE__))
-savefig(summ,"./Figures/froot_hast.png")
-savefig(summ_nh,"./Figures/froot_h0.png")
-savefig(summ_fh,"./Figures/froot_h1.png")
+savefig(summ,"froot_hast.png")
+savefig(summ_nh,"froot_h0.png")
+savefig(summ_fh,"froot_h1.png")

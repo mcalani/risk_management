@@ -13,9 +13,9 @@ using LaTeXStrings   #to write LaTeX in legends
 using QuantEcon      #stationary distributions
 using StatsPlots     #kernel density
 using Random         #seed
-
+cd(dirname(@__FILE__))
 #Load stochastic structure
-include("Bianchi2011_stochastic.jl")
+include("calibration.jl")
 include("aux_funcs.jl")
 
 #Parameters

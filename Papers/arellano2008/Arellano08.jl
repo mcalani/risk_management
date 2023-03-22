@@ -163,6 +163,8 @@ high, low = 1.05 * mean(y_grid), 0.95 * mean(y_grid)
 iy_high, iy_low = map(x -> searchsortedfirst(y_grid, x), (high, low))
 
 plot(B_grid,[ q[:,iy_high] q[:,iy_low] ],xaxis=[-0.4,0.])
+cd(dirname(@__FILE__))
+savefig("fig1.png")
 
 
 heatmap(B_grid[1:end-1],y_grid[2:end], xaxis=[-0.4, 0.05],
@@ -170,3 +172,5 @@ heatmap(B_grid[1:end-1],y_grid[2:end], xaxis=[-0.4, 0.05],
 plot!(xlabel = "B'", ylabel = "y", title = "Probability of default",
     legend = :topleft)
 
+cd(dirname(@__FILE__))
+savefig("fig1.png")

@@ -86,14 +86,14 @@ function max_by_element!(A,B)
 end;
 
 #Parameters
-β   = 0.953
-γ   = 2.0
-r   = 0.017
-ρ   = 0.945
-η   = 0.025
-θ   = 0.282 #reentering international credit market probability
-ny  = 10#21
-nB  = 100 #251
+const β   = 0.953
+const γ   = 2.0
+const r   = 0.017
+const ρ   = 0.945
+const η   = 0.025
+const θ   = 0.282 #reentering international credit market probability
+const ny  = 10#21
+const nB  = 100 #251
 
 #Discretization
 Π        = tauchen(ny, ρ, η).p
@@ -198,7 +198,7 @@ function VFI(vd,vc,vf,q,T_operator;show_every=10)
 end
 
 #test
-@time vd,vc,vf, Bp, δ, q = VFI(vd,vc,vf,q,T_operator)
+@time vd,vc,vf, Bp, δ, q = VFI(vd,vc,vf,q,T_operator;show_every=1)
 
 
 defs== default_states

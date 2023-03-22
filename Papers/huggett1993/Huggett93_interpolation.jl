@@ -196,14 +196,22 @@ v02=log.(a_grid);
 
 V,σ,Q,ψ=Huggett_model(v01,v02, qh0, ql0, a_grid)
 
-plot(V[1:200])
-plot!(V[201:400])
+plot(V[1:200],label="value1")
+plot!(V[201:400],label="value2")
+cd(dirname(@__FILE__))
+savefig("fig1.png")
 
-plot(σ[1:200])
-plot!(σ[201:400])
+
+plot(σ[1:200],label="PF_1")
+plot!(σ[201:400],label="PF_2")
+cd(dirname(@__FILE__))
+savefig("fig2.png")
+
 
 Ψ_h = cumsum(ψ[1:200]);
 Ψ_l = cumsum(ψ[201:400]);
 
-plot(a_grid,Ψ_h)
-plot!(a_grid,Ψ_l)
+plot(a_grid,Ψ_h,label="acum_dist1")
+plot!(a_grid,Ψ_l,label="acum_dist2")
+cd(dirname(@__FILE__))
+savefig("fig3.png")
