@@ -5,15 +5,15 @@ using LinearAlgebra, Statistics
 using Parameters, Plots, QuantEcon
 
 #Initial parameters
-const r = 0.01
-const w = 1.0
+const r = 0.03
+const w = .956
 const σ = 1.0
 const β = 0.96
 
 #Grid
 const a_min  = 1e-10
-const a_max  = 18.0
-const Na     = 500
+const a_max  = 20.0
+const Na     = 200
 const a_grid = collect(range(a_min, a_max, length=Na))
 
 #Stochastic process
@@ -33,7 +33,9 @@ const Π_ss = stationary_distributions(z_chain)[1]
 # ---------------------------------------------------------------------------- #
 
 
-function Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,n_iter=100,V_init=false,print=false)
+function Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,tol=1e-2,V_init=false,print=false)
+  #parameters
+
   #initial values
   aux_positive(x) = x > 0 ? x : 1e-25
   a_guess  = repeat(a_grid,1,Nz)
@@ -49,7 +51,7 @@ function Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,n_iter=100,V_init=false
   diff = norm(V0 .- V_max)
   #states -> (A,Z,A')
   # for zzz in 1:n_iter
-  while diff > 0.01 #1e-3
+  while diff > tol #1e-3
     EV = Π * V0' #[Int.(V_max_i)]
     for (i,a) in enumerate(a_grid)
       for (ii,ap) in enumerate(a_grid) 
@@ -70,7 +72,7 @@ function Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,n_iter=100,V_init=false
   return V_max , V_max_i   
 end
 
-V , Vi= Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,n_iter=200,print=true) #,V_init=V
+V , Vi= Households(;r=r,w=w,a_grid=a_grid,z_grid=z_grid,tol=1e-3,print=true) #,V_init=V
 
 pyplot()
 plot(a_grid,V, size=(900,600),legend=:bottomright, title="Value Function")
@@ -98,15 +100,16 @@ new_w(r) = A * (1 - α) * (A * α / (r + δ)) ^ (α / (1 - α))
 
 
 #Iteration
-r_grid = range(0.005, 0.04, length = 20)
+r_grid = collect(range(0.02, 0.06, length = 30))
 K      = zeros(length(r_grid))
 
-ai = 1
+ai = 120 #fixing a level of capital
+# V_iter = copy(V)
 
-for (i,r) in enumerate(r_grid)
-  println(i)
-  w = new_w(r)
-  V_iter , Vi_iter = Households(;w=w, r=r,n_iter=250,print=false,V_init=V_iter)
+@time for (i,ri) in enumerate(r_grid)
+  println("iter=$i ; IntRate =$ri")
+  wi = new_w(ri)
+  ~ , Vi_iter = Households(;w=wi, r=ri,tol=1e-5,print=false)
   K[i] = dot(a_grid[Int.(Vi_iter)][ai,:] , Π_ss) #supply of capital
 end
 
