@@ -1,3 +1,5 @@
+# Froot Scharfstein Stein 1993 JF 
+
 using LinearAlgebra   #norm function (compute norm of a matrix)
 using Plots           #plots
 using Roots
