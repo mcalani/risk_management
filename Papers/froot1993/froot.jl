@@ -20,43 +20,43 @@ using Distributions
 #      Esta grilla se puede calibrar (medianamente) moviendo α y σ.
 # iv) También se pueden mover los parámetros de la función de profit,γ y ν, para modificar la concavidad de P(w)
 
-# ---------------------------------------------------------------------------- #
-#        Stochastic processes: w = w0(h+(1-h)ϵ) , θ = α(ϵ-̄ϵ)+1, ϵ∼N(1,σ^2)     #
-# ---------------------------------------------------------------------------- #
 
-#ϵ process
-const σ       = 1/5
-const ϵ_bar   = 1
-const N_ϵ     = 5
-const ϵ_grid  = collect(range(1-2*σ, 1+2*σ, length=5))
-const π       = 1/N_ϵ
-
-#θ process
-const α       = 0.3 #ENTRE 2 Y 3 PARA QUE DE ALGO RAZONABLE.
-const θ_grid  = α*(ϵ_grid .- ϵ_bar) .+ 1
 
 # ---------------------------------------------------------------------------- #
 #                                  Parameters                                  #
 # ---------------------------------------------------------------------------- #
-#wealth grid: la definimos al final
-# w0_min   = 0.05
-# w0_max   = 2.00
-# w0_grid  = collect(w0_min:0.01:w0_max)
-# Nw       = length(w0_grid)
+    # source of risk 
+std_ϵ = 1/5     #const = global variable whose value wont change  
+ϵ_bar   = 1
+N_ϵ     = 5
+ϵ_grid  = collect(range(ϵ_bar-2*std_ϵ, ϵ_bar+2*std_ϵ, length=5))
 
-#net present value of investment expenditures F(I)
-const γ           = 1/3;      #technology
-f(I;gamma=γ)= I  > 0 ?  (1/gamma)*I^gamma : 0;   #technology
-F(I;θ=θ_grid)        = θ_grid.*f.(I) .- I
+    # productivity correlation with shock 
+corr_inv_opp       = 0.3         
+θ_grid  = corr_inv_opp*(ϵ_grid .- ϵ_bar) .+ 1
+    
+    # production and cost function 
+γ = 1/3;      
+φ = 2; 
 
-#cost of external financing C(e)
-const ν           = (1+γ)
-C(e;ν=ν)    = e  > 0 ? (e).^ν : 0
+    # wealth grid: la definimos al final
+    # w0_min   = 0.05
+    # w0_max   = 2.00
+    # w0_grid  = collect(w0_min:0.01:w0_max)
+    # Nw       = length(w0_grid)
 
-# x_grid  = collect(0.01:0.001:10)
-# plot(x_grid,C.(x_grid),legend=:bottomright, xaxis=L"x", yaxis="C(x)",label="C(e)")
-# plot!(x_grid,F.(x_grid), xaxis=L"x", yaxis="P(w)",label="F(I)")
+    #net present value of investment expenditures F(I)
+ff(I;gamma=γ)= I  > 0 ?  (1/gamma)*I^gamma : 0;   
+FF(I;θ=θ_grid)        = θ_grid.*ff.(I) .- I
+CC(e;conve=φ)    = e  > 0 ? (e).^conve : 0  #cost of external financing C(e)
 
+#= Plot to check 
+x_grid  = collect(0.01:0.01:2)
+FFeval = FF.(x_grid) 
+FFevalp = (convert(Array{Float64}, reduce(hcat, FFeval)))'
+FFevalp = FFevalp  .- CC.(x_grid .- 0.1)
+plot(x_grid,FFevalp, xaxis=L"X", yaxis="P(w)",label="F(I)")
+=#
 
 #profit function
 function P(w ; e=0, θ=θ_grid)
