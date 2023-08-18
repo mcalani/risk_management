@@ -21,7 +21,6 @@ using Distributions
 # iv) También se pueden mover los parámetros de la función de profit,γ y ν, para modificar la concavidad de P(w)
 
 
-
 # ---------------------------------------------------------------------------- #
 #                                  Parameters                                  #
 # ---------------------------------------------------------------------------- #
@@ -39,57 +38,46 @@ corr_inv_opp       = 0.3
 γ = 1/3;      
 φ = 2; 
 
-    # wealth grid: la definimos al final
-    # w0_min   = 0.05
-    # w0_max   = 2.00
-    # w0_grid  = collect(w0_min:0.01:w0_max)
-    # Nw       = length(w0_grid)
+# ---------------------------------------------------------------------------- #
+#                                  Functional forms                            #
+# ---------------------------------------------------------------------------- #
 
     #net present value of investment expenditures F(I)
 ff(I;gamma=γ)= I  > 0 ?  (1/gamma)*I^gamma : 0;   
-FF(I;θ=θ_grid)        = θ_grid.*ff.(I) .- I
+FF(I;θ=θ_grid)        = θ.*ff.(I) .- I
 CC(e;conve=φ)    = e  > 0 ? (e).^conve : 0  #cost of external financing C(e)
 
 #= Plot to check 
-x_grid  = collect(0.01:0.01:2)
-FFeval = FF.(x_grid) 
-FFevalp = (convert(Array{Float64}, reduce(hcat, FFeval)))'
-FFevalp = FFevalp  .- CC.(x_grid .- 0.1)
-plot(x_grid,FFevalp, xaxis=L"X", yaxis="P(w)",label="F(I)")
+    x_grid  = collect(0.01:0.01:2)
+    FFeval = FF.(x_grid) 
+    FFevalp = (convert(Array{Float64}, reduce(hcat, FFeval)))'
+    FFevalp = FFevalp  .- CC.(x_grid .- 0.1)
+    plot(x_grid,FFevalp, xaxis=L"X", yaxis="P(w)",label="F(I)")
 =#
 
-#profit function
+    #profit function
 function P(w ; e=0, θ=θ_grid)
-    I      = w + e
-    Profit = F.(I;θ=θ) .- C.(e)
+    I = w + e
+    Profit = FF(I;θ=θ) .- CC(e)
     return Profit
 end
 
-# pyplot()# plotly()
-# plot(w0_grid ,P.(w0_grid),legend=:bottomleft, xaxis=L"w", yaxis=L"P(w)",title="Profit function",label="e=0")
-# plot!(w0_grid,P.(w0_grid;e=0.01), xaxis=L"w" , yaxis=L"P(w)",title="Profit function",label="e=0.01")
-# plot!(w0_grid,P.(w0_grid;e=0.1), xaxis=L"w"  , yaxis=L"P(w)",title="Profit function",label="e=0.1")
+    # first derivatives
+ff_I(I; gamma = γ)  =  I  > 0 ? I.^(gamma-1) : 0
+CC_e(e; conve = φ)  =  e  > 0 ? conve*e.^(conve-1) : 0
 
+    # second derivatives
+ff_II(I; gamma = γ) =  I  > 0 ? (gamma-1)*I.^(gamma-2) : -0
+CC_ee(e; conve = φ) =  e  > 0 ? conve*(conve-1)*e.^(conve-2) : -0
 
-# ---------------------------------------------------------------------------- #
-#                                  Derivatives                                 #
-# ---------------------------------------------------------------------------- #
-# first derivatives
-f_I(I)  =  I  > 0 ? I.^(γ-1) : 0
-C_e(e)  =  e  > 0 ? ν*e.^(ν-1) : 0
+    # derivative dI*/dw
+Iast_w(Iast,w,ϵ) = -CC_ee(Iast-w) ./ ( (corr_inv_opp*(ϵ .- ϵ_bar) .+1).*f_II(Iast) .- C_ee(Iast-w) )
 
-# second derivatives
-f_II(I) =  I  > 0 ? (γ-1)*I.^(γ-2) : -0
-C_ee(e) =  e  > 0 ? ν*(ν-1)*e.^(ν-2) : -0
-
-# derivative dI*/dw
-Iast_w(Iast,w,ϵ) = -C_ee(Iast-w) ./ ( (α*(ϵ .- ϵ_bar) .+1).*f_II(Iast) .- C_ee(Iast-w) )
-
-#OPT1: dan igual
+    #OPT1: dan igual
 # P_ww(Iast,w,ϵ) = (α*(ϵ .- ϵ_bar) .+1).*f_II(Iast).*Iast_w(Iast,w,ϵ).^2 .- C_ee(Iast-w).*( Iast_w(Iast,w,ϵ).- 1).^2
 
-#OPT2: dan igual
-P_ww(I,w,ϵ) = (α*(ϵ .- ϵ_bar) .+1).*f_II.(I).*Iast_w.(I,w,ϵ)
+    #OPT2: dan igual
+P_ww(I,w,ϵ) = (corr_inv_opp*(ϵ .- ϵ_bar) .+1).*ff_II.(I).*Iast_w.(I,w,ϵ)
 
 
 
@@ -331,3 +319,15 @@ cd(dirname(@__FILE__))
 savefig(summ,"froot_hast.png")
 savefig(summ_nh,"froot_h0.png")
 savefig(summ_fh,"froot_h1.png")
+
+    # wealth grid: la definimos al final
+    # w0_min   = 0.05
+    # w0_max   = 2.00
+    # w0_grid  = collect(w0_min:0.01:w0_max)
+    # Nw       = length(w0_grid)
+
+
+# pyplot()# plotly()
+# plot(w0_grid ,P.(w0_grid),legend=:bottomleft, xaxis=L"w", yaxis=L"P(w)",title="Profit function",label="e=0")
+# plot!(w0_grid,P.(w0_grid;e=0.01), xaxis=L"w" , yaxis=L"P(w)",title="Profit function",label="e=0.01")
+# plot!(w0_grid,P.(w0_grid;e=0.1), xaxis=L"w"  , yaxis=L"P(w)",title="Profit function",label="e=0.1")
