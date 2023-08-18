@@ -80,20 +80,20 @@ Iast_w(Iast,w,ϵ) = -CC_ee(Iast-w) ./ ( (corr_inv_opp*(ϵ .- ϵ_bar) .+1).*f_II(
 P_ww(I,w,ϵ) = (corr_inv_opp*(ϵ .- ϵ_bar) .+1).*ff_II.(I).*Iast_w.(I,w,ϵ)
 
 
+# ---------------------------------------------------------------------------- #
+#                        Auxiliares modelo                                     #
+# ---------------------------------------------------------------------------- #
 
-
-#funcion auxiliar: condicion de primer orden en t=1
-function FOC_t_1(F , par ; w0=0.01, hi=0, ϵ_grid=ϵ_grid)
-    #determine number of equations
-    N     = length(ϵ_grid)
-
-    #determine parameters
+    #funcion auxiliar: condicion de primer orden en t=1
+function FOC_t_1(F , par ; w0=0.01, hi=0, ϵ_grid=ϵ_grid)    #F output, par input 
+        #determine number of equations
+    N = length(ϵ_grid)
+        #determine parameters
     I_ast = par[1:N]
     h_ast = hi #par[N]
-
         #F.O.C t=1: decide optimal I
     w1      = w0.*(h_ast .+ (1-h_ast).*ϵ_grid)
-    F[1:N]  = ( (α.*(ϵ_grid .- ϵ_bar) .+1).*f_I.(I_ast) .- 1 .-  C_e.(I_ast.-w1) ).^2
+    F[1:N]  = ( (corr_inv_opp.*(ϵ_grid .- ϵ_bar) .+1).*ff_I.(I_ast) .- 1 .-  CC_e.(I_ast.-w1) ).^2
 end
 
 
